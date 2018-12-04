@@ -1,0 +1,22 @@
+.Input {
+  border: 0;
+  border-bottom: 1px solid rgb(66, 66, 66);
+  font-size: 20px;
+  width: 100%;
+
+  &:focus {
+    border-bottom-width: 2px;
+    transition-duration: 200ms;
+    outline: none;
+  }
+
+  &:disabled {
+    background: none;
+    border-color: grey;
+  }
+}
+
+.Input--completed {
+  text-decoration: line-through;
+  color: grey;
+}

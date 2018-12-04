@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  background: #f8f8f7;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat';
+  padding: 30px;
+}
+
+.Title {
+  display: flex;
+  flex-direction: column;
+  font-size: 55px;
+  margin: 12px 0;
+  color: #0078db;
+
+  &:after {
+    content: '';
+    margin-top: 10px;
+    height: 3px;
+    width: 70px;
+    background-color: #0078db;
+  }
+}
+
+.Todo__wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-self: center;
+  width: 70%;
+}
+
+.Todo__wrapper__section {
+  flex-basis: 100%;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.Todo__add__wrapper {
+  display: flex;
+}

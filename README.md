@@ -1,8 +1,5 @@
 # React TODO
 
-## Todo
+This is a basic Todo web application fully developed in ReactJS with latest Hooks feature (draft api).
 
-[] - Create basic layout.
-[] - Create state.
-[] - Store state in browser's storage.
-[] - Add unit testing.
+![TODO Application](docs/application.png 'TODO Application')

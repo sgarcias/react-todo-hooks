@@ -1,3 +1,3 @@
 # TODO
 
-- [] Use localstorage.
+- [ ] Use localstorage.

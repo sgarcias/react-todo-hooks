@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import generateUUID from 'uuid/v4';
 
 import Todo from './Todo';
@@ -6,59 +6,15 @@ import Todo from './Todo';
 import './App.scss';
 import AddTodo from './AddTodo';
 
-const initialState = {};
-const reducer = (state = initialState, action = {}) => {
-  const { todo: existingTodo } = state;
-
-  switch (action.type) {
-    case 'add': {
-      const { todo } = action;
-      const { id, ...newTodo } = todo;
-
-      return { todo: { ...existingTodo, [id]: { id, ...newTodo } } };
-    }
-
-    case 'edit': {
-      const { id, content } = action;
-      // Remove TODO if input does not contain value.
-      if (!content.length) {
-        // eslint-disable-next-line
-        const { [id]: todoToRemove, ...remainingTodo } = existingTodo;
-
-        return { todo: remainingTodo };
-      }
-
-      return { todo: { ...existingTodo, [id]: { ...existingTodo[id], content } } };
-    }
-
-    case 'complete': {
-      const { id } = action;
-
-      return {
-        todo: {
-          ...existingTodo,
-          [id]: { ...existingTodo[id], checked: !existingTodo[id].checked },
-        },
-      };
-    }
-
-    case 'remove': {
-      const { id } = action;
-      // eslint-disable-next-line
-      const { [id]: todoToRemove, ...remainingTodo } = existingTodo;
-
-      return {
-        todo: remainingTodo,
-      };
-    }
-
-    default:
-      return state;
-  }
-};
+import reducer, { initialState } from '../reducers/todo';
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, { todo: initialState });
+
+  useEffect(() => {
+    localStorage.setItem('todo', JSON.stringify(state.todo));
+  });
+
   const { todo } = state;
 
   const addTodo = (content) => {

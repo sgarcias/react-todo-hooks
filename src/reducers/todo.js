@@ -7,6 +7,7 @@ export default (state = initialState, action = {}) => {
     case 'add': {
       const { todo } = action;
       const { id, ...newTodo } = todo;
+      if (!id) return state;
 
       return { todo: { ...existingTodo, [id]: { id, ...newTodo } } };
     }
